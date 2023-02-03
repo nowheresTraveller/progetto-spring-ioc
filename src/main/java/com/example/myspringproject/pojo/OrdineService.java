@@ -1,4 +1,4 @@
-package com.example.myspringproject;
+package com.example.myspringproject.pojo;
 
 public class OrdineService {
 
