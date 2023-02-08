@@ -2,9 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        https://www.springframework.org/schema/beans/spring-beans.xsd"
+        default-init-method="init" default-destroy-method="clean">
 
     <!--Questo xml è legato alla bean factory che funziona con i metodi d'istanza  -->
+    <!-- Gli attributi ' default-init-method' e 'default-destroy-method' in beans indica che tutti i bean
+         hanno un metodo di post-inizialization e pre-destroy -->
 
     <bean id="secondBeanFactory" class="com.example.myspringproject.beanfactory.SecondBeanFactory">
     </bean>
@@ -13,6 +16,11 @@
     </bean>
 
     <bean id="persona2" factory-bean="secondBeanFactory" factory-method="getPersona">
+    </bean>
+
+    <!-- gli attributi 'init-method' e 'destroy-method' di questo bean sovrascrivono quelli presenti nell'elemento 'beans-->
+    <bean id="auto2" factory-bean="secondBeanFactory" factory-method="getAuto" init-method="initAuto"
+          destroy-method="cleanAuto">
     </bean>
 
 

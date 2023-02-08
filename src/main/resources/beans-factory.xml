@@ -4,6 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- File di configurazione di un bean factory con metodi statici-->
 
     <bean id="beanFactory" class="com.example.myspringproject.beanfactory.BeanFactory">
     </bean>

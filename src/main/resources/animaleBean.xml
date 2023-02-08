@@ -6,7 +6,7 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="persona" class="com.example.myspringproject.pojo.PersonaService">
+    <bean id="animale" class="com.example.myspringproject.pojo.AnimaleService">
     </bean>
 
 
