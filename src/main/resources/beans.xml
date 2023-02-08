@@ -11,25 +11,25 @@
         <property name="mioOrdine" ref="ordine"></property>
     </bean>
 
-    <bean id="negozio" class="com.example.myspringproject.pojo.NegozioService" >
+    <bean id="negozio" class="com.example.myspringproject.pojo.ConcessionariaService" >
         <constructor-arg ref="auto"></constructor-arg>      <!-- Dependency injection (constructor injection) -->
         <constructor-arg ref="ordine"></constructor-arg>    <!-- ref = l'argomento passato è un bean-->
         <constructor-arg type="String" value="New Cars 2000"></constructor-arg> <!-- L'argomento passato è un tipo semplice
                                                                                      (type='String', value='New Cars 2000')-->
     </bean>
 
-    <bean id="negozio2" class = "com.example.myspringproject.pojo.NegozioService">
+    <bean id="negozio2" class = "com.example.myspringproject.pojo.ConcessionariaService">
         <constructor-arg index="0" value="Cars deluxe"></constructor-arg>
         <constructor-arg index="1" value="59"></constructor-arg>
         <constructor-arg index="2" ref="ordine"></constructor-arg>
         <!-- index = inserisce i valori in base all'ordine dei parametri del costruttore -->
     </bean>
 
-    <bean id="negozio3" class="com.example.myspringproject.pojo.NegozioService">
+    <bean id="negozio3" class="com.example.myspringproject.pojo.ConcessionariaService">
         <constructor-arg name="nomeConcessionaria" value="Super cars Experts"></constructor-arg>
         <constructor-arg name="numeroDiAuto" value="74"></constructor-arg>
     </bean> <!-- gli argomenti del costruttore sono legati all'annotation '@ConstructorProperties' sul costruttore di
-                  'NegozioService'-->
+                  'ConcessionariaService'-->
 
     <bean id="auto"  class="com.example.myspringproject.pojo.AutoService"></bean>
 

@@ -1,7 +1,7 @@
 package com.example.myspringproject;
 
 import com.example.myspringproject.pojo.AutoService;
-import com.example.myspringproject.pojo.NegozioService;
+import com.example.myspringproject.pojo.ConcessionariaService;
 import com.example.myspringproject.pojo.OrdineService;
 import com.example.myspringproject.pojo.PersonaService;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -34,12 +34,12 @@ public class Main {
         System.out.println(auto.toString());
         */
         /*
-        NegozioService negozio = context.getBean("negozio2",NegozioService.class);
+        ConcessionariaService negozio = context.getBean("negozio2",ConcessionariaService.class);
         negozio.stampaNomeNegozio();
         negozio.stampaNumeroAuto();
         System.out.println (negozio.getOrdine().dammiListaOrdini());
         */
-        NegozioService secondoNegozio = context.getBean("negozio3",NegozioService.class);
+        ConcessionariaService secondoNegozio = context.getBean("negozio3", ConcessionariaService.class);
         secondoNegozio.stampaNomeNegozio();
         secondoNegozio.stampaNumeroAuto();
     }
