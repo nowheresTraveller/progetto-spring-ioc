@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Questo container contiene un solo bean -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd"
+        default-init-method="init">
+
+
+    <bean id="persona" class="com.example.myspringproject.pojo.PersonaService" lazy-init="true">
+    </bean>
+    <!-- l'attributo 'lazy-init permette di creare il bean 'persona' in modalità lazy -->
+    <!-- Il container, quando viene istanziato, crea automaticamente i beans in esso contenuto-->
+    <!-- un bean in modalità "lazy-inizialitazion" viene creato solo quando viene richiesto dal codice java -->
+    <!-- esempio : PersonaService firstPerson = context.getBean("persona", PersonaService.class); -->
+
+    <bean id="ordine" class="com.example.myspringproject.pojo.OrdineService">
+    </bean>
+
+
+
+
+</beans>

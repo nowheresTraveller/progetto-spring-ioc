@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Questo container contiene un solo bean -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
-    <bean id="auto" class="com.example.myspringproject.pojo.AutoService">
-        <property name="marca" value="Fiat"></property>  <!-- Dependency injection (setter injection)-->
-        <property name="modello" value="Punto"></property>
-    </bean>
-
-
-
-
+    <!-- TODO fare attributo scope -->
+    <bean id="prova" class="com.example.myspringproject.pojo.ProvaService" scope="singleton"></bean>
+    <bean id="animale" class="com.example.myspringproject.pojo.AnimaleService" scope="prototype"></bean>
 </beans>

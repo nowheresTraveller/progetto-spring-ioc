@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+ <!-- TODO fare autowire -->
+ <bean id="prova" class="com.example.myspringproject.pojo.ProvaService" autowire="byName"></bean>
+ <bean id="animale" class="com.example.myspringproject.pojo.AnimaleService" autowire="byType"> </bean>
+ <bean id="libro" class="com.example.myspringproject.pojo.LibroService" autowire="constructor"> </bean>
+
+</beans>

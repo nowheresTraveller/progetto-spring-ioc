@@ -1,9 +1,6 @@
 package com.example.myspringproject;
 
-import com.example.myspringproject.pojo.AutoService;
-import com.example.myspringproject.pojo.ConcessionariaService;
-import com.example.myspringproject.pojo.OrdineService;
-import com.example.myspringproject.pojo.PersonaService;
+import com.example.myspringproject.pojo.*;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,13 +8,42 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        containerWithXml();
+        //containerWithXml();
         //containerWithXmlWithBeanFactory();
         //containerWithXmlWithBeanFactorySecond();
         //containerWithAnnotation();
         //getTipoBean();
+        //provaLazyInit();
+        //provaDipendenzaIndiretta();
+        createBeanThroughtAutowire();
     }
 
+    public static void createBeanThroughtAutowire(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans-con-autowire.xml");
+        ProvaService prova = context.getBean("prova", ProvaService.class);
+        AnimaleService animale = context.getBean ("animale", AnimaleService.class);
+        LibroService libro = context.getBean("libro",LibroService.class);
+        prova.stampa();
+        prova.stampaVersoAnimale();
+        System.out.println("--------");
+        animale.verso();
+        animale.stampaProvaService();
+        System.out.println("--------");
+        libro.stampaProvaService();
+    }
+
+    public static void provaDipendenzaIndiretta() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        OrdineService ordine = context.getBean("ordineConDipendenza", OrdineService.class);
+    }
+
+
+    //Faccio una prova di 'lazy-inizialization' attraverso metodo 'init'
+    public static void provaLazyInit() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans-prova-lazy-init.xml");
+        PersonaService persona = context.getBean("persona", PersonaService.class);
+        OrdineService ordine = context.getBean("ordine", OrdineService.class);
+    }
 
     //Creazione Ioc container che usa xml (classe = ClassPathXmlApplicationContext)
     public static void containerWithXml() {
@@ -38,10 +64,12 @@ public class Main {
         negozio.stampaNomeNegozio();
         negozio.stampaNumeroAuto();
         System.out.println (negozio.getOrdine().dammiListaOrdini());
-        */
+
         ConcessionariaService secondoNegozio = context.getBean("negozio3", ConcessionariaService.class);
         secondoNegozio.stampaNomeNegozio();
         secondoNegozio.stampaNumeroAuto();
+        */
+        AutoService auto = context.getBean("auto", AutoService.class);
     }
 
 
@@ -62,7 +90,7 @@ public class Main {
         ApplicationContext context = new ClassPathXmlApplicationContext("second-beans-factory.xml");
         OrdineService ordine = context.getBean("ordine2", OrdineService.class);
         PersonaService persona = context.getBean("persona2", PersonaService.class);
-        AutoService auto = context.getBean("auto2",AutoService.class);
+        AutoService auto = context.getBean("auto2", AutoService.class);
         //System.out.println(ordine.getSaluto());
         //System.out.println(persona.faiSomma(3, 3));
 
@@ -74,7 +102,6 @@ public class Main {
     }
 
 
-
     //Creazione Ioc container che usa Annotation (classe = AnnotationConfigApplicationContext)
     public static void containerWithAnnotation() {
         ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
@@ -83,11 +110,10 @@ public class Main {
     }
 
 
-
     //Questo metodo permette di ricavare il tipo di un bean di un Ioc container
-    public static void getTipoBean (){
+    public static void getTipoBean() {
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-        Class <?> tipo = context.getType("persona");
-        System.out.println (tipo.getName());
+        Class<?> tipo = context.getType("persona");
+        System.out.println(tipo.getName());
     }
 }

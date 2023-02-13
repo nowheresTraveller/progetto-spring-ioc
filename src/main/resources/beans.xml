@@ -9,7 +9,13 @@
     <!-- inietto il bean 'ordine' nel campo dell' oggetto PersonaService 'mioOrdine'-->
     <bean id="persona" class="com.example.myspringproject.pojo.PersonaService">
         <property name="mioOrdine" ref="ordine"></property>
+                                            <!-- Dependency injection (setter injection): utilizzo il metodo setter del campo
+                                                 ordine per dare il valore al campo dell'oggetto 'PersonaService'-->
     </bean>
+
+    <bean id="ordineConDipendenza" class="com.example.myspringproject.pojo.OrdineService" depends-on="prova"></bean>
+    <!-- 'depends-on' = dà al bean una dipendenza indiretta-->
+    <bean id="prova" class="com.example.myspringproject.pojo.ProvaService"></bean>
 
     <bean id="negozio" class="com.example.myspringproject.pojo.ConcessionariaService" >
         <constructor-arg ref="auto"></constructor-arg>      <!-- Dependency injection (constructor injection) -->
