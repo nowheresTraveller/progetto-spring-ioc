@@ -1,6 +1,8 @@
 package com.example.myspringproject;
 
 import com.example.myspringproject.pojo.*;
+import com.example.myspringproject.pojowithannotation.EsempioService;
+import com.example.myspringproject.pojowithannotation.FruttoService;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -16,9 +18,33 @@ public class Main {
         //provaLazyInit();
         //provaDipendenzaIndiretta();
         //createBeanThroughtAutowire();
-        createbeanWithScope();
+        //createbeanWithScope();
+        //createBeanThoughtFileProperties();
+        createBeanthoughtXmlAndAnnot();
     }
 
+
+
+    public static void createBeanthoughtXmlAndAnnot(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans-thought-javaAnnotation.xml");
+        /*
+        EsempioService esempio = context.getBean("esempio",EsempioService.class);
+        esempio.setStringa("Good morning!");
+        esempio.stampaStringa();
+        */
+
+        FruttoService frutto = context.getBean ("frutto", FruttoService.class);
+        frutto.setCampiMoto("harley davidson","sportster");
+        frutto.stampaCampiMoto();
+
+
+    }
+
+    public static void createBeanThoughtFileProperties(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans-with-fileProperties.xml");
+        AutoService auto = context.getBean("auto", AutoService.class);
+        System.out.println (auto.toString());
+    }
     public static void createbeanWithScope(){
         ApplicationContext context = new ClassPathXmlApplicationContext("beans-scope.xml");
         ProvaService prova = context.getBean("prova", ProvaService.class);
