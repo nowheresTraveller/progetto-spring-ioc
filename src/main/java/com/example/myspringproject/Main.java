@@ -15,7 +15,21 @@ public class Main {
         //getTipoBean();
         //provaLazyInit();
         //provaDipendenzaIndiretta();
-        createBeanThroughtAutowire();
+        //createBeanThroughtAutowire();
+        createbeanWithScope();
+    }
+
+    public static void createbeanWithScope(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans-scope.xml");
+        ProvaService prova = context.getBean("prova", ProvaService.class);
+        AnimaleService animale = context.getBean("animale",AnimaleService.class);
+        prova.setMiaStringa("hello");
+        System.out.println("miaStringa di 'prova':");
+        ProvaService secondaProva = context.getBean("prova", ProvaService.class);
+        prova.stampaMiaStringa();
+        System.out.println("miaStringa di 'secondaProva':");
+        secondaProva.stampaMiaStringa();
+        animale.verso();
     }
 
     public static void createBeanThroughtAutowire(){
