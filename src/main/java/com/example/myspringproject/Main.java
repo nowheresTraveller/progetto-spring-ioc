@@ -1,8 +1,8 @@
 package com.example.myspringproject;
 
 import com.example.myspringproject.pojo.*;
-import com.example.myspringproject.pojowithannotation.EsempioService;
-import com.example.myspringproject.pojowithannotation.FruttoService;
+import com.example.myspringproject.pojowithjavaannotation.*;
+import com.example.myspringproject.pojowithannotationandxml.FruttoService;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -13,14 +13,14 @@ public class Main {
         //containerWithXml();
         //containerWithXmlWithBeanFactory();
         //containerWithXmlWithBeanFactorySecond();
-        //containerWithAnnotation();
+        containerWithAnnotation();
         //getTipoBean();
         //provaLazyInit();
         //provaDipendenzaIndiretta();
         //createBeanThroughtAutowire();
         //createbeanWithScope();
         //createBeanThoughtFileProperties();
-        createBeanthoughtXmlAndAnnot();
+        //createBeanthoughtXmlAndAnnot();
     }
 
 
@@ -144,9 +144,16 @@ public class Main {
 
     //Creazione Ioc container che usa Annotation (classe = AnnotationConfigApplicationContext)
     public static void containerWithAnnotation() {
-        ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
-        OrdineService ordine = context.getBean("ordineConAnn", OrdineService.class);
-        System.out.println(ordine.getSaluto());
+
+        /*
+        ApplicationContext firstContext = new AnnotationConfigApplicationContext(FirstConfig.class);
+        UserService user = firstContext.getBean("user", UserService.class);
+        user.stampa();
+        */
+
+        ApplicationContext secondContext= new AnnotationConfigApplicationContext(SecondConfig.class, ThirdConfig.class);
+        LaptopService laptop = secondContext.getBean("laptop", LaptopService.class);
+        System.out.println(laptop.toString());
     }
 
 
