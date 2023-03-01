@@ -1,4 +1,4 @@
-package com.example.myspringproject.pojowithannotationandxml;
+package com.example.myspringproject.pojowithcomponentscaninxml;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

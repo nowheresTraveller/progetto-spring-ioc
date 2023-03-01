@@ -1,8 +1,9 @@
 package com.example.myspringproject;
 
+import com.example.myspringproject.fileconfigjavacentric.ThirdConfig;
 import com.example.myspringproject.pojo.*;
 import com.example.myspringproject.pojowithjavaannotation.*;
-import com.example.myspringproject.pojowithannotationandxml.FruttoService;
+import com.example.myspringproject.pojowithcomponentscaninxml.FruttoService;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -21,12 +22,26 @@ public class Main {
         //createbeanWithScope();
         //createBeanThoughtFileProperties();
         //createBeanthoughtXmlAndAnnot();
+        CreateFromConfigXmlCentric();
+        CreateFromConfigJavaCentric();
     }
 
 
+    public static void CreateFromConfigXmlCentric(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans-for-file-config-xmlcentric.xml");
+        UserService user=context.getBean("user",UserService.class);
+        user.stampa();
+    }
 
+
+    public static void CreateFromConfigJavaCentric(){
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.example.myspringproject.pojowithjavaannotation");
+        OrdineService ordine=context.getBean("ordine",OrdineService.class);
+        System.out.println(ordine.dammiListaOrdini());
+
+    }
     public static void createBeanthoughtXmlAndAnnot(){
-        ApplicationContext context = new ClassPathXmlApplicationContext("beans-thought-javaAnnotation.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans-with-componentScan.xml");
         /*
         EsempioService esempio = context.getBean("esempio",EsempioService.class);
         esempio.setStringa("Good morning!");
@@ -151,9 +166,8 @@ public class Main {
         user.stampa();
         */
 
-        ApplicationContext secondContext= new AnnotationConfigApplicationContext(SecondConfig.class, ThirdConfig.class);
-        LaptopService laptop = secondContext.getBean("laptop", LaptopService.class);
-        System.out.println(laptop.toString());
+        ApplicationContext secondContext= new AnnotationConfigApplicationContext(SecondConfig.class);
+
     }
 
 

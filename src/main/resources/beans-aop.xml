@@ -7,6 +7,7 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-<!-- ho abilitato l'app per utilizzare le annotation AOP (attraverso i link sopra)-->
+<!-- Un altro modo per abilitare l'applicazione ad utilizzare l'AOP di aspectJ-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 </beans>

@@ -37,6 +37,7 @@
             <artifactId>javax.inject</artifactId>
             <version>1</version>
         </dependency>
+        <!--Dipendenze per L'IOC e per definire i beans-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -47,20 +48,19 @@
             <artifactId>spring-beans</artifactId>
             <version>5.3.25</version>
         </dependency>
+
+        <!--Dipendenza per utilizzare l'oggetto 'ApplicationContext'-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>5.3.25</version>
         </dependency>
+        <!-- -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.25</version>
+       </dependency>
     </dependencies>
 
     <build>
