@@ -1,9 +1,10 @@
 package com.example.myspringproject;
 
-import com.example.myspringproject.fileconfigjavacentric.ThirdConfig;
 import com.example.myspringproject.pojo.*;
+import com.example.myspringproject.pojo.ProvaService;
 import com.example.myspringproject.pojowithjavaannotation.*;
 import com.example.myspringproject.pojowithcomponentscaninxml.FruttoService;
+import com.example.myspringproject.pojowithjavaannotation.SampleService;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -22,8 +23,8 @@ public class Main {
         //createbeanWithScope();
         //createBeanThoughtFileProperties();
         //createBeanthoughtXmlAndAnnot();
-        CreateFromConfigXmlCentric();
-        CreateFromConfigJavaCentric();
+        //CreateFromConfigXmlCentric();
+        //CreateFromConfigJavaCentric();
     }
 
 
@@ -160,14 +161,21 @@ public class Main {
     //Creazione Ioc container che usa Annotation (classe = AnnotationConfigApplicationContext)
     public static void containerWithAnnotation() {
 
-        /*
         ApplicationContext firstContext = new AnnotationConfigApplicationContext(FirstConfig.class);
         UserService user = firstContext.getBean("user", UserService.class);
+        SampleService sample= firstContext.getBean("sample", SampleService.class);
+        AziendaService x =firstContext.getBean("azienda",AziendaService.class);
         user.stampa();
-        */
+        sample.stampaDatiLaptopService();
+        x.stampaUserService();
 
-        ApplicationContext secondContext= new AnnotationConfigApplicationContext(SecondConfig.class);
-
+        /*
+        ApplicationContext secondContext= new AnnotationConfigApplicationContext(configWithComponentScan.class);
+        LaptopService laptop= secondContext.getBean("laptop",LaptopService.class);
+        AziendaService azienda = secondContext.getBean("azienda",AziendaService.class);
+        laptop.toString();
+        azienda.stampa();
+             */
     }
 
 

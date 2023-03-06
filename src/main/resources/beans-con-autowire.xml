@@ -5,8 +5,23 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
+ <!-- autowire 'byName' = vengono settati i campi dell'oggetto ProvaService.
+      Il container cerca dei bean del file di configurazione che hanno lo stesso nome
+      dei campi di ProvaService (confronta gli id dei bean con i nome di campi della classe).
+      Per eseguire questo autowire la classe ProvaService deve avere i metodi setter
+      dei suoi campi.-->
+
  <bean id="prova" class="com.example.myspringproject.pojo.ProvaService" autowire="byName"></bean>
+
+ <!-- autowire 'byType' = setta i campi di un oggetto. Il container cerca nel file di
+      configurazione dei bean che hanno lo stesso tipo dei campi dell'oggetto con
+      autowire="byType". Se li trova li setta. Per eseguire questo tipo di autowire la classe
+      con autowire deve avere i metodi setter sui campi.-->
+
  <bean id="animale" class="com.example.myspringproject.pojo.AnimaleService" autowire="byType"> </bean>
+
+ <!-- autowire 'constructor' = passa dei bean al costruttore di LibroService. Passa i bean
+      del file di configurazione che hanno lo stesso tipo  degli argomenti del costruttore.-->
  <bean id="libro" class="com.example.myspringproject.pojo.LibroService" autowire="constructor"> </bean>
 
 </beans>
