@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ImportResource;
 // Attraverso file di configurazione java che utilizza un file xml
 // per prelevare dei dati (o altro)
 @Configuration
-@ImportResource("beansbeans-for-file-config-javacentric.xml")
+@ImportResource("beans-for-file-config-javacentric.xml")
 public class ThirdConfig {
 
     @Value("${thirdConfig.marcaLaptop}")

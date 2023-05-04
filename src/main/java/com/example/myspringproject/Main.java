@@ -1,10 +1,10 @@
 package com.example.myspringproject;
 
+import com.example.myspringproject.fileconfigjavacentric.ThirdConfig;
 import com.example.myspringproject.pojo.*;
 import com.example.myspringproject.pojo.ProvaService;
 import com.example.myspringproject.pojowithjavaannotation.*;
 import com.example.myspringproject.pojowithcomponentscaninxml.FruttoService;
-import com.example.myspringproject.pojowithjavaannotation.SampleService;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -15,7 +15,7 @@ public class Main {
         //containerWithXml();
         //containerWithXmlWithBeanFactory();
         //containerWithXmlWithBeanFactorySecond();
-        containerWithAnnotation();
+//       containerWithAnnotation();
         //getTipoBean();
         //provaLazyInit();
         //provaDipendenzaIndiretta();
@@ -24,7 +24,7 @@ public class Main {
         //createBeanThoughtFileProperties();
         //createBeanthoughtXmlAndAnnot();
         //CreateFromConfigXmlCentric();
-        //CreateFromConfigJavaCentric();
+        CreateFromConfigJavaCentric();
     }
 
 
@@ -36,9 +36,13 @@ public class Main {
 
 
     public static void CreateFromConfigJavaCentric(){
-        ApplicationContext context = new AnnotationConfigApplicationContext("com.example.myspringproject.pojowithjavaannotation");
-        OrdineService ordine=context.getBean("ordine",OrdineService.class);
-        System.out.println(ordine.dammiListaOrdini());
+//        ApplicationContext context = new AnnotationConfigApplicationContext("com.example.myspringproject.pojowithjavaannotation");
+//        OrdineService ordine=context.getBean("ordine",OrdineService.class);
+//        System.out.println(ordine.dammiListaOrdini());
+        ApplicationContext context = new AnnotationConfigApplicationContext(ThirdConfig.class);
+        LaptopService laptop = context.getBean("laptop",LaptopService.class);
+        OrdineService ordine = context.getBean("ordine",OrdineService.class);
+        System.out.println(ordine.getSaluto());
 
     }
     public static void createBeanthoughtXmlAndAnnot(){
@@ -161,21 +165,21 @@ public class Main {
     //Creazione Ioc container che usa Annotation (classe = AnnotationConfigApplicationContext)
     public static void containerWithAnnotation() {
 
-        ApplicationContext firstContext = new AnnotationConfigApplicationContext(FirstConfig.class);
-        UserService user = firstContext.getBean("user", UserService.class);
-        SampleService sample= firstContext.getBean("sample", SampleService.class);
-        AziendaService x =firstContext.getBean("azienda",AziendaService.class);
-        user.stampa();
-        sample.stampaDatiLaptopService();
-        x.stampaUserService();
+//        ApplicationContext firstContext = new AnnotationConfigApplicationContext(FirstConfig.class);
+//        UserService user = firstContext.getBean("user", UserService.class);
+//        SampleService sample= firstContext.getBean("sample", SampleService.class);
+//        AziendaService x =firstContext.getBean("azienda",AziendaService.class);
+//        user.stampa();
+//        sample.stampaDatiLaptopService();
+//        x.stampaUserService();
 
-        /*
+
         ApplicationContext secondContext= new AnnotationConfigApplicationContext(configWithComponentScan.class);
         LaptopService laptop= secondContext.getBean("laptop",LaptopService.class);
         AziendaService azienda = secondContext.getBean("azienda",AziendaService.class);
-        laptop.toString();
+        System.out.println (laptop.toString());
         azienda.stampa();
-             */
+
     }
 
 

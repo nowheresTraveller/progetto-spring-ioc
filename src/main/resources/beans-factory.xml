@@ -13,6 +13,9 @@
           init-method="init" destroy-method="clean">
     </bean>
 
+    <!-- init-method = indica che l'istanza prodotta ha un metodo di post-inizialitation che va in esecuzione -->
+    <!-- destroy-method = indica che l'istanza prodotta ha un metodo di pre-destroy che va in esecuzione -->
+
     <bean id="personaService" class="com.example.myspringproject.beanfactory.BeanFactory" factory-method="getPersona">
     </bean>
 
