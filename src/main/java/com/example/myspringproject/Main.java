@@ -15,7 +15,7 @@ public class Main {
         //containerWithXml();
         //containerWithXmlWithBeanFactory();
         //containerWithXmlWithBeanFactorySecond();
-//       containerWithAnnotation();
+       containerWithAnnotation();
         //getTipoBean();
         //provaLazyInit();
         //provaDipendenzaIndiretta();
@@ -24,7 +24,7 @@ public class Main {
         //createBeanThoughtFileProperties();
         //createBeanthoughtXmlAndAnnot();
         //CreateFromConfigXmlCentric();
-        CreateFromConfigJavaCentric();
+//        CreateFromConfigJavaCentric();
     }
 
 
@@ -176,9 +176,9 @@ public class Main {
 
         ApplicationContext secondContext= new AnnotationConfigApplicationContext(configWithComponentScan.class);
         LaptopService laptop= secondContext.getBean("laptop",LaptopService.class);
-        AziendaService azienda = secondContext.getBean("azienda",AziendaService.class);
-        System.out.println (laptop.toString());
-        azienda.stampa();
+//        AziendaService azienda = secondContext.getBean("azienda",AziendaService.class);
+        System.out.println ("--"+laptop.toString());
+//        azienda.stampa();
 
     }
 
